@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bhvwv1gt76eak"]
+
+[ext_resource type="Script" uid="uid://g1fgc8to7l63" path="res://scripts/board_cell.gd" id="1_b2452"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a5naf"]
+size = Vector2(90, 90)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iblnq"]
+font_size = 36
+font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="BoardCell" type="TextureButton" unique_id=1515267880]
+offset_right = 90.0
+offset_bottom = 90.0
+offset_transform_visual_only = false
+texture_normal = SubResource("PlaceholderTexture2D_a5naf")
+script = ExtResource("1_b2452")
+
+[node name="Label" type="Label" parent="." unique_id=2064162602]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "11"
+label_settings = SubResource("LabelSettings_iblnq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_self_pressed"]

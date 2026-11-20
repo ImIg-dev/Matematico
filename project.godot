@@ -11,13 +11,32 @@ config_version=5
 [application]
 
 config/name="Matematico"
+run/main_scene="uid://bvaked43tcyy7"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/textures/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://rocrs5owvfye"
+general/default_playback_type.web=0
+
+[autoload]
+
+Saves="*uid://d0fea820lbn7b"
 
 [display]
 
+window/size/viewport_width=505
+window/size/viewport_height=900
+window/size/initial_position_type=0
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor]
+
+naming/default_signal_callback_to_self_name="_on_self_{signal_name}"
 
 [physics]
 
@@ -25,5 +44,7 @@ window/stretch/aspect="expand"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

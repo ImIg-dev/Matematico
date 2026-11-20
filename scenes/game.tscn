@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://bvaked43tcyy7"]
+
+[ext_resource type="Script" uid="uid://dk3ep4atv1htp" path="res://scripts/game.gd" id="1_uwrxv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iblnq"]
+font_size = 31
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iblnq"]
+size = Vector2(485, 200)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uwrxv"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
+font_size = 123
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pjqo"]
+font_size = 56
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwrxv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqjtg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnu2h"]
+font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_puekp"]
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_2822c"]
+font_size = 49
+
+[node name="Game" type="Control" unique_id=173701679]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uwrxv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=740343458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=926751616]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1577307922]
+layout_mode = 2
+text = "I: MAXIMUM"
+label_settings = SubResource("LabelSettings_iblnq")
+horizontal_alignment = 1
+
+[node name="Board" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=1122965437]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Board" unique_id=422892762]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="Board2" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=1263192554]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Board2" unique_id=224932286]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="HUD" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1492556988]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HUD" unique_id=1417142745]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_iblnq")
+
+[node name="TimeLeftBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HUD" unique_id=1812123215]
+visible = false
+modulate = Color(18.892157, 18.892157, 0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 15.0
+value = 5.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HUD" unique_id=162623346]
+layout_mode = 2
+
+[node name="RoundTurn" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=2047741264]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "II
+24/25"
+label_settings = SubResource("LabelSettings_uwrxv")
+horizontal_alignment = 2
+
+[node name="CurrentNumber" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=1662133260]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "13"
+label_settings = SubResource("LabelSettings_yqjtg")
+horizontal_alignment = 1
+
+[node name="Points" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=462559527]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x"
+label_settings = SubResource("LabelSettings_uwrxv")
+
+[node name="Timer" type="Timer" parent="." unique_id=931068981]
+
+[node name="SeedSelection" type="ColorRect" parent="." unique_id=476020334]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection" unique_id=890955408]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/MarginContainer" unique_id=239797691]
+layout_mode = 2
+
+[node name="title" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=94633723]
+layout_mode = 2
+text = "SEED SELECTION"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1136561707]
+layout_mode = 2
+theme_override_constants/separation = 57
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uwrxv")
+
+[node name="random" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1772602401]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+text = "random seed"
+
+[node name="HSeparator2" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1416069308]
+layout_mode = 2
+theme_override_constants/separation = 81
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="custom" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=844523262]
+layout_mode = 2
+text = "custom seed:"
+label_settings = SubResource("LabelSettings_lnu2h")
+horizontal_alignment = 1
+
+[node name="SeedInputField" type="LineEdit" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=711041422]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+placeholder_text = "00000"
+alignment = 1
+max_length = 5
+emoji_menu_enabled = false
+clear_button_enabled = true
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="submit" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=950123440]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "play the seed"
+
+[node name="FinalScore" type="ColorRect" parent="." unique_id=438688503]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinalScore" unique_id=1249067764]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="FinalScore/VBoxContainer" unique_id=2004402364]
+layout_mode = 2
+size_flags_vertical = 6
+text = "50"
+label_settings = SubResource("LabelSettings_puekp")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="FinalScore/VBoxContainer" unique_id=1307361908]
+layout_mode = 2
+text = " seed:"
+label_settings = SubResource("LabelSettings_2822c")
+
+[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/random" to="." method="_on_random_pressed"]
+[connection signal="text_changed" from="SeedSelection/MarginContainer/VBoxContainer/SeedInputField" to="." method="_on_seed_input_field_text_changed"]
+[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/submit" to="." method="_on_submit_pressed"]
