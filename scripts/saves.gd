@@ -1,5 +1,12 @@
 extends Node
-@export var points : Array[float]
+@export var best_scores : Dictionary
+@export var points : Array[int]
+@export var points_I : Array[int]
+@export var points_II : Array[int]
+@export var points_IIIa : Array[int]
+@export var points_IIIb : Array[int]
+@export var seeds : Array[int]
+@export var timed_moves : bool
 const SAVE_FOLDER : String = "user://saved_settings/"
 
 func _ready() -> void:
@@ -19,7 +26,7 @@ func _ready() -> void:
 
 ##SAVING FUNCTIONS
 func get_save_file_path() -> String:
-	return SAVE_FOLDER + str("settings.res")
+	return SAVE_FOLDER + str("settings.tres")
 
 func save_data() -> void:
 	var new_save = SaveData.new()
@@ -31,7 +38,14 @@ func save_data() -> void:
 func load_data() -> void:
 	if not FileAccess.file_exists(get_save_file_path()):
 		print("WARN: a save-file does not exist, creating a new one...")
+		best_scores = {}
 		points = []
+		points_I = []
+		points_II = []
+		points_IIIa = []
+		points_IIIb = []
+		timed_moves = 0
+		seeds = []
 		save_data()
 		return
 	var loaded_save = ResourceLoader.load(get_save_file_path()) as SaveData

@@ -1,34 +1,327 @@
 [gd_scene format=3 uid="uid://bvaked43tcyy7"]
 
 [ext_resource type="Script" uid="uid://dk3ep4atv1htp" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="FontFile" uid="uid://dndetidvpwyx" path="res://assets/fonts/Anonymous_Pro_B.ttf" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bhvwv1gt76eak" path="res://scenes/board_cell.tscn" id="2_p57ef"]
+[ext_resource type="FontFile" uid="uid://c7658xgbs8sa8" path="res://assets/fonts/Anonymous_Pro.ttf" id="2_u5sy4"]
+[ext_resource type="FontFile" uid="uid://dtchh78o5ljjr" path="res://assets/fonts/Anonymous_Pro_I.ttf" id="3_iywne"]
+[ext_resource type="FontFile" uid="uid://3iave2bs7gvk" path="res://assets/fonts/Anonymous_Pro_BI.ttf" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bcv8l5j76b7ow" path="res://assets/textures/imig-glow-logo.png" id="5_iywne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca42v"]
+bg_color = Color(0.06666667, 0.1882353, 0.22745098, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_iblnq"]
-font_size = 31
+font = ExtResource("2_u5sy4")
+font_size = 34
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iblnq"]
-size = Vector2(485, 200)
+[sub_resource type="LabelSettings" id="LabelSettings_rysoc"]
+font = ExtResource("2_lbhrr")
+font_size = 43
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pjqo"]
+bg_color = Color(0.06666667, 0.1882353, 0.22745098, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5sy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_uwrxv"]
+font = ExtResource("2_lbhrr")
 font_size = 30
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pjqo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
+font = ExtResource("4_p57ef")
 font_size = 123
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+outline_size = 6
+outline_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
+font = ExtResource("2_lbhrr")
+font_size = 25
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font = ExtResource("2_lbhrr")
+font_size = 72
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+shadow_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvpfn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iblnq"]
+bg_color = Color(0.06552558, 0.18891558, 0.22710772, 1)
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1pjqo"]
-font_size = 56
+font = ExtResource("3_iywne")
+font_size = 45
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+outline_size = 4
+outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwrxv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqjtg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0feh"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p57ef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
+bg_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnu2h"]
-font_size = 38
+font = ExtResource("4_p57ef")
+font_size = 40
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqjtg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kice"]
+bg_color = Color(0.029503005, 0.11232388, 0.14093566, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtaks"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+font = ExtResource("3_iywne")
+font_size = 18
+font_color = Color(0.6304908, 0.63049084, 0.6304908, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0.11052462, 0.26226488, 0.3143181, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvpfn"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dinhu"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvuet"]
+bg_color = Color(0.06552558, 0.18891558, 0.22710772, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trtic"]
+bg_color = Color(0.10980392, 0.2627451, 0.3137255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir15t"]
+bg_color = Color(0.06552558, 0.18891558, 0.22710772, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntcvr"]
+font = ExtResource("4_p57ef")
+font_size = 29
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntcvr"]
+bg_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+draw_center = false
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssvqc"]
+bg_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee14"]
+bg_color = Color(0.029503005, 0.11232388, 0.14093566, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
+font = ExtResource("3_iywne")
+font_size = 45
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+outline_size = 4
+outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puekp"]
+bg_color = Color(0.06666667, 0.1882353, 0.22745098, 1)
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_puekp"]
+font = ExtResource("2_lbhrr")
 font_size = 200
+font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+outline_size = 9
+outline_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+shadow_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+shadow_offset = Vector2(0, 9)
 
-[sub_resource type="LabelSettings" id="LabelSettings_2822c"]
-font_size = 49
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iblnq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font = ExtResource("2_u5sy4")
+font_size = 31
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+outline_size = 1
+outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_264po"]
+bg_color = Color(0.06552558, 0.18891558, 0.22710772, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="Game" type="Control" unique_id=173701679]
 layout_mode = 3
@@ -38,6 +331,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwrxv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=560056339]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02745098, 0.11372549, 0.14117648, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=740343458]
 layout_mode = 1
@@ -49,15 +351,35 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=926751616]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1577307922]
+[node name="HUD2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=5281140]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HUD2" unique_id=1359418295]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ca42v")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HUD2" unique_id=666112504]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HUD2/CenterContainer" unique_id=52257297]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HUD2/CenterContainer/VBoxContainer" unique_id=1577307922]
+layout_mode = 2
+text = "seed: 99999"
+label_settings = SubResource("LabelSettings_iblnq")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HUD2/CenterContainer/VBoxContainer" unique_id=2138223032]
 layout_mode = 2
 text = "I: MAXIMUM"
-label_settings = SubResource("LabelSettings_iblnq")
+label_settings = SubResource("LabelSettings_rysoc")
 horizontal_alignment = 1
 
 [node name="Board" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=1122965437]
@@ -68,6 +390,81 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 5
+
+[node name="BoardCell" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=278121891 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell2" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=206667111 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell3" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1210123191 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell4" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=137771707 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell5" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=605226324 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell6" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1448141255 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell7" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1162990100 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell8" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1063224893 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell9" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1046464163 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell10" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=394969474 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell11" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=160260948 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell12" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1849105696 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell13" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1346245791 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell14" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=924494677 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell15" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=977215672 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell16" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=630689852 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell17" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=919332302 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell18" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1797331210 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell19" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1461233445 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell20" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1264201954 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell21" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1038909364 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell22" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1520372624 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell23" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=609709989 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell24" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1454703888 instance=ExtResource("2_p57ef")]
+layout_mode = 2
+
+[node name="BoardCell25" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=1699759788 instance=ExtResource("2_p57ef")]
+layout_mode = 2
 
 [node name="Board2" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=1263192554]
 visible = false
@@ -83,15 +480,16 @@ columns = 5
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HUD" unique_id=1417142745]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HUD" unique_id=1774374901]
 layout_mode = 2
-texture_normal = SubResource("PlaceholderTexture2D_iblnq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1pjqo")
 
 [node name="TimeLeftBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HUD" unique_id=1812123215]
 visible = false
-modulate = Color(18.892157, 18.892157, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_u5sy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rysoc")
 max_value = 15.0
 value = 5.0
 show_percentage = false
@@ -100,30 +498,40 @@ show_percentage = false
 layout_mode = 2
 
 [node name="RoundTurn" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=2047741264]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "II
 24/25"
 label_settings = SubResource("LabelSettings_uwrxv")
 horizontal_alignment = 2
 
-[node name="CurrentNumber" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=1662133260]
-custom_minimum_size = Vector2(200, 0)
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=1061436525]
 layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1pjqo")
+
+[node name="CurrentNumber" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=1662133260]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 text = "13"
 label_settings = SubResource("LabelSettings_yqjtg")
 horizontal_alignment = 1
 
-[node name="Points" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=462559527]
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=875708195]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "x"
-label_settings = SubResource("LabelSettings_uwrxv")
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1pjqo")
+
+[node name="Points" type="Label" parent="MarginContainer/VBoxContainer/HUD/HBoxContainer" unique_id=462559527]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "11+11-2*11"
+label_settings = SubResource("LabelSettings_p57ef")
 
 [node name="Timer" type="Timer" parent="." unique_id=931068981]
 
 [node name="SeedSelection" type="ColorRect" parent="." unique_id=476020334]
-visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -131,7 +539,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 1, 1)
+color = Color(0.029503005, 0.11232388, 0.14093566, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="SeedSelection" unique_id=890955408]
 layout_mode = 1
@@ -150,48 +558,206 @@ layout_mode = 2
 
 [node name="title" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=94633723]
 layout_mode = 2
-text = "SEED SELECTION"
-label_settings = SubResource("LabelSettings_1pjqo")
+text = "MATEMATICO"
+label_settings = SubResource("LabelSettings_u5sy4")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1136561707]
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1399458718]
 layout_mode = 2
-theme_override_constants/separation = 57
+theme_override_constants/separation = 21
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1750146439]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer" unique_id=16921999]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer" unique_id=1737628435]
+layout_mode = 2
+
+[node name="NewGame" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=379572921]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "NEW RUN"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1136561707]
+layout_mode = 2
+theme_override_constants/separation = 7
 theme_override_styles/separator = SubResource("StyleBoxEmpty_uwrxv")
 
-[node name="random" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1772602401]
+[node name="random" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1772602401]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_x0feh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iywne")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_p57ef")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lbhrr")
 text = "random seed"
 
-[node name="HSeparator2" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1416069308]
+[node name="HSeparator2" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1416069308]
 layout_mode = 2
-theme_override_constants/separation = 81
-theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+theme_override_constants/separation = 21
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
 
-[node name="custom" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=844523262]
+[node name="custom" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=844523262]
 layout_mode = 2
 text = "custom seed:"
 label_settings = SubResource("LabelSettings_lnu2h")
 horizontal_alignment = 1
 
-[node name="SeedInputField" type="LineEdit" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=711041422]
-custom_minimum_size = Vector2(0, 80)
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1224543330]
 layout_mode = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="SeedInputField" type="LineEdit" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=711041422]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_colors/font_placeholder_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1kice")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vtaks")
 placeholder_text = "00000"
 alignment = 1
 max_length = 5
 emoji_menu_enabled = false
-clear_button_enabled = true
+shortcut_keys_enabled = false
 virtual_keyboard_type = 2
 caret_blink = true
 
-[node name="submit" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=950123440]
+[node name="Label" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField" unique_id=1391925036]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="submit" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=950123440]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvpfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dinhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
 text = "play the seed"
 
-[node name="FinalScore" type="ColorRect" parent="." unique_id=438688503]
+[node name="HSeparator2" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=946040065]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="TimedMoves" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1543510694]
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SeedSelection/MarginContainer/VBoxContainer/TimedMoves" unique_id=1728872061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -20.0
+offset_right = 214.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer" unique_id=1361866438]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+text = "timed moves"
+label_settings = SubResource("LabelSettings_ntcvr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer" unique_id=41777306]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntcvr")
+
+[node name="Panel2" type="Panel" parent="SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer" unique_id=1999597061]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssvqc")
+
+[node name="HSeparator4" type="HSeparator" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=2087041854]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="Button" type="Button" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1476020367]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="PreviousRuns" type="Label" parent="SeedSelection/MarginContainer/VBoxContainer/Button" unique_id=155484412]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -24.0
+offset_right = 237.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PREVIOUS RUNS"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1440805413]
+scroll_offset = Vector2(83, 822)
+repeat_size = Vector2(69, 0)
+autoscroll = Vector2(15, 0)
+repeat_times = 28
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedSelection/MarginContainer/VBoxContainer/Parallax2D" unique_id=2084805456]
+modulate = Color(0, 1.1560134, 1.4018731, 1)
+position = Vector2(931.99994, 27.999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_iywne")
+
+[node name="PreviousRuns" type="ColorRect" parent="SeedSelection" unique_id=542749466]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -199,9 +765,193 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 1, 1)
+color = Color(0.029503005, 0.11232388, 0.14093566, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FinalScore" unique_id=1249067764]
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/PreviousRuns" unique_id=805105516]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/PreviousRuns/MarginContainer" unique_id=1387144859]
+layout_mode = 2
+
+[node name="title" type="Label" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=729760485]
+layout_mode = 2
+text = "MATEMATICO"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=1088800200]
+layout_mode = 2
+theme_override_constants/separation = 21
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=427474175]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer" unique_id=726012111]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer" unique_id=132357956]
+layout_mode = 2
+
+[node name="NewGame" type="Label" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1627175555]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "PREVIOUS RUNS"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2075713038]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_uwrxv")
+
+[node name="custom" type="Label" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=706701651]
+layout_mode = 2
+text = "search by seed:"
+label_settings = SubResource("LabelSettings_lnu2h")
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1645893507]
+layout_mode = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="SearchBySeed" type="LineEdit" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1168440240]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_colors/font_placeholder_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_gee14")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vtaks")
+placeholder_text = "00000"
+alignment = 1
+max_length = 5
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="Label" type="Label" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBySeed" unique_id=575451610]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSeparator2" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=646231254]
+layout_mode = 2
+theme_override_constants/separation = 21
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2009582121]
+custom_minimum_size = Vector2(0, 250)
+custom_maximum_size = Vector2(-1, 250)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_constants/line_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_u5sy4")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+fit_content = true
+selection_enabled = true
+
+[node name="HSeparator2" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=1379326851]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="HSeparator4" type="HSeparator" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=1303687741]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="BackToMenu" type="Button" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=1137221948]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="PreviousRuns" type="Label" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/BackToMenu" unique_id=1729968610]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -24.0
+offset_right = 237.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK TO MENU"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=5512542]
+scroll_offset = Vector2(-13, 824)
+repeat_size = Vector2(69, 0)
+autoscroll = Vector2(15, 0)
+repeat_times = 28
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/Parallax2D" unique_id=1981949249]
+modulate = Color(0, 1.1560134, 1.4018731, 1)
+position = Vector2(931.99994, 27.999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_iywne")
+
+[node name="FinalScore" type="ColorRect" parent="." unique_id=438688503]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03137255, 0.11372549, 0.14117648, 1)
+
+[node name="title2" type="Label" parent="FinalScore" unique_id=1717738528]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.5
+offset_right = 237.5
+offset_bottom = 73.0
+grow_horizontal = 2
+text = "MATEMATICO"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="FinalScore" unique_id=1485909144]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,18 +959,115 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="FinalScore/VBoxContainer" unique_id=2004402364]
+[node name="VBoxContainer" type="VBoxContainer" parent="FinalScore/CenterContainer" unique_id=2120267446]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FinalScore/CenterContainer/VBoxContainer" unique_id=477563915]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer" unique_id=929499543]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_puekp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer" unique_id=1249067764]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2004402364]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 6
-text = "50"
+text = "999"
 label_settings = SubResource("LabelSettings_puekp")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="FinalScore/VBoxContainer" unique_id=1307361908]
+[node name="RichTextLabel" type="RichTextLabel" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1332963571]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = " seed:"
-label_settings = SubResource("LabelSettings_2822c")
+focus_mode = 2
+theme_override_colors/default_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+theme_override_fonts/normal_font = ExtResource("4_p57ef")
+theme_override_font_sizes/normal_font_size = 50
+text = "seed: 99999"
+fit_content = true
+horizontal_alignment = 1
+selection_enabled = true
 
-[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/random" to="." method="_on_random_pressed"]
-[connection signal="text_changed" from="SeedSelection/MarginContainer/VBoxContainer/SeedInputField" to="." method="_on_seed_input_field_text_changed"]
-[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/submit" to="." method="_on_submit_pressed"]
+[node name="HSeparator" type="HSeparator" parent="FinalScore/CenterContainer/VBoxContainer" unique_id=1576895281]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iblnq")
+
+[node name="MarginContainer2" type="MarginContainer" parent="FinalScore/CenterContainer/VBoxContainer" unique_id=149821251]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer2" unique_id=2047683139]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_puekp")
+
+[node name="MarginContainer" type="MarginContainer" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer2" unique_id=342101595]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label2" type="Label" parent="FinalScore/CenterContainer/VBoxContainer/MarginContainer2/MarginContainer" unique_id=1815104265]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Your personal best on this seed is: 999"
+label_settings = SubResource("LabelSettings_gee14")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="FinalScore/CenterContainer/VBoxContainer" unique_id=476073510]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iblnq")
+
+[node name="Button2" type="Button" parent="FinalScore/CenterContainer/VBoxContainer" unique_id=440698020]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_264po")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="PreviousRuns" type="Label" parent="FinalScore/CenterContainer/VBoxContainer/Button2" unique_id=60286534]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -24.0
+offset_right = 237.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK TO MENU"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+
+[node name="Parallax2D2" type="Parallax2D" parent="FinalScore/CenterContainer" unique_id=622613920]
+scroll_offset = Vector2(-13, 824)
+repeat_size = Vector2(69, 0)
+autoscroll = Vector2(15, 0)
+repeat_times = 28
+
+[node name="Sprite2D" type="Sprite2D" parent="FinalScore/CenterContainer/Parallax2D2" unique_id=280286828]
+modulate = Color(0, 1.1560134, 1.4018731, 1)
+position = Vector2(931.99994, 27.999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_iywne")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random" to="." method="_on_random_pressed"]
+[connection signal="text_changed" from="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField" to="." method="_on_seed_input_field_text_changed"]
+[connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/submit" to="." method="_on_submit_pressed"]
+[connection signal="button_up" from="SeedSelection/MarginContainer/VBoxContainer/TimedMoves" to="." method="_on_timed_moves_button_up"]
+[connection signal="button_up" from="SeedSelection/MarginContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
+[connection signal="button_up" from="FinalScore/CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_button_up"]

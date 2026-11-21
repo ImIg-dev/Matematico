@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1795201438|1623185600';
+const CACHE_VERSION = '1795286888|23607088149';
 /** @type {string} */
 const CACHE_PREFIX = 'Matematico-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

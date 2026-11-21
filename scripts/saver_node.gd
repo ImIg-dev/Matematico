@@ -3,7 +3,7 @@ class_name SaverNode extends Node
 
  
 const SAVER_NODE_GROUP: String = "saver_node"
-var properties_to_save: Array[String] = ["master", "music", "sfx", "player_count"]
+var properties_to_save: Array[String] = ["best_scores", "seeds", "points", "points_I", "points_II", "points_IIIa", "points_IIIb", "timed_moves"]
 
 func _ready() -> void:
 	add_to_group(SAVER_NODE_GROUP)
