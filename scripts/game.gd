@@ -3,6 +3,7 @@ var board : Array[int] = []
 var second_board : Array[int] = []
 @onready var board_grid: GridContainer = $MarginContainer/VBoxContainer/Board/GridContainer
 @onready var second_board_grid: GridContainer = $MarginContainer/VBoxContainer/Board2/GridContainer
+@onready var tween_rect: ColorRect = $TweenRect
 const board_size := 5 #THIS SHOULD BE 5!
 const max_number := 13 #THIS SHOULD BE 13!
 var no_of_number_sets := 4 #THIS SHOULD BE 4!
@@ -31,6 +32,7 @@ var pointsI : int = 0
 var pointsII : int = 0
 var pointsIIIa : int = 0
 var pointsIIIb : int = 0
+var old_second_board : bool = 0
 
 func _ready() -> void:
 	Saves.load_data()
@@ -60,12 +62,8 @@ func _process(_delta: float) -> void:
 		$MarginContainer/VBoxContainer/Board2.visible = 0
 	elif round_no == 3 and not second_board_opened:
 		mode.text = "IIIa: MAXIMUM"
-		$MarginContainer/VBoxContainer/Board.visible = 1
-		$MarginContainer/VBoxContainer/Board2.visible = 0
 	elif round_no == 3 and second_board_opened:
 		mode.text = "IIIb: MINIMUM"
-		$MarginContainer/VBoxContainer/Board.visible = 0
-		$MarginContainer/VBoxContainer/Board2.visible = 1
 	if not seed_selection.visible and turn <= board_size*board_size+1:
 		$MarginContainer/VBoxContainer/HUD/HBoxContainer/CurrentNumber.text = str(number_sequence[turn-2])
 		$MarginContainer/VBoxContainer/HUD/HBoxContainer/RoundTurn.text = "%s\n%s/%s" % [round_greek, turn, board_size*board_size]
@@ -80,7 +78,17 @@ func _process(_delta: float) -> void:
 		round_over()
 	if Input.is_anything_pressed() and waiting:
 		waiting = 0
+		tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+		var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+		tween.tween_property(tween_rect, "color:a", 1, 1)
+		await tween.finished
 		generate_numbers()
+		tween_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tween_rect.color.a = 1
+		var tween_2 = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+		tween_2.tween_property(tween_rect, "color:a", 0, 1)
+		await tween_2.finished
+		tween_rect.visible = 0
 	if previous_runs.visible:
 		run_list.text = ""
 		if search_by_seed.text != "":
@@ -90,12 +98,19 @@ func _process(_delta: float) -> void:
 		else:
 			for i in Saves.seeds.size():
 				run_list.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]|%s|%s|%s|%s|[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]\n" % [Saves.seeds[i], Saves.points_I[i], -2*Saves.points_II[i], Saves.points_IIIa[i], -2*Saves.points_IIIb[i], Saves.points[i]] + run_list.text
+	if not old_second_board and second_board_opened:
+		$MarginContainer/VBoxContainer/Board.visible = 0
+		$MarginContainer/VBoxContainer/Board2.visible = 1
+	elif old_second_board and not second_board_opened:
+		$MarginContainer/VBoxContainer/Board.visible = 1
+		$MarginContainer/VBoxContainer/Board2.visible = 0
+	old_second_board = second_board_opened
 
 func generate_numbers() -> void:
 	board = []
 	second_board = []
 	number_sequence = []
-	var amplifier : int = (round_no-1)*10000
+	var amplifier : int = (round_no)*10000
 	while 1==1:
 		if no_of_number_sets*13 >= board_size*board_size:
 			break
@@ -316,8 +331,18 @@ func round_over() -> void:
 
 func _on_submit_pressed() -> void:
 	custom_seed = int($SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField.text)
+	tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+	tween.tween_property(tween_rect, "color:a", 1, 1)
+	await tween.finished
 	seed_selection.visible = 0
 	generate_numbers()
+	tween_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tween_rect.color.a = 1
+	var tween_2 = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween_2.tween_property(tween_rect, "color:a", 0, 1)
+	await tween_2.finished
+	tween_rect.visible = 0
 
 func _on_seed_input_field_text_changed(new_text: String) -> void:
 	if not new_text.is_valid_int() and not new_text == "":
@@ -329,8 +354,18 @@ func _on_seed_input_field_text_changed(new_text: String) -> void:
 
 func _on_random_pressed() -> void:
 	custom_seed = randi_range(0, 99999)
+	tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+	tween.tween_property(tween_rect, "color:a", 1, 1)
+	await tween.finished
 	seed_selection.visible = 0
 	generate_numbers()
+	tween_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tween_rect.color.a = 1
+	var tween_2 = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween_2.tween_property(tween_rect, "color:a", 0, 1)
+	await tween_2.finished
+	tween_rect.visible = 0
 
 func _on_timed_moves_button_up() -> void:
 	if Saves.timed_moves:

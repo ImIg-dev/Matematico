@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Matematico"
+config/version="2.1.0"
 run/main_scene="uid://bvaked43tcyy7"
 config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.03137255, 0.11372549, 0.14117648, 1)
+boot_splash/image="uid://dja5uegaajdqc"
+config/icon="uid://dc2u6m2cimcog"
 
 [audio]
 

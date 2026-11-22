@@ -282,6 +282,22 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5newe"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
 font = ExtResource("3_iywne")
 font_size = 45
@@ -389,6 +405,8 @@ size_flags_vertical = 3
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Board" unique_id=422892762]
 layout_mode = 2
 size_flags_horizontal = 4
+offset_transform_enabled = true
+offset_transform_visual_only = false
 columns = 5
 
 [node name="BoardCell" parent="MarginContainer/VBoxContainer/Board/GridContainer" unique_id=278121891 instance=ExtResource("2_p57ef")]
@@ -474,6 +492,8 @@ size_flags_vertical = 3
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Board2" unique_id=224932286]
 layout_mode = 2
 size_flags_horizontal = 4
+offset_transform_enabled = true
+offset_transform_visual_only = false
 columns = 5
 
 [node name="HUD" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1492556988]
@@ -839,7 +859,7 @@ theme_override_colors/font_placeholder_color = Color(0.54509807, 0.627451, 0.643
 theme_override_fonts/font = ExtResource("2_lbhrr")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_gee14")
-theme_override_styles/focus = SubResource("StyleBoxFlat_vtaks")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5newe")
 placeholder_text = "00000"
 alignment = 1
 max_length = 5
@@ -1060,6 +1080,17 @@ modulate = Color(0, 1.1560134, 1.4018731, 1)
 position = Vector2(931.99994, 27.999998)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_iywne")
+
+[node name="TweenRect" type="ColorRect" parent="." unique_id=1511167756]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03137255, 0.11372549, 0.14117648, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random" to="." method="_on_random_pressed"]
