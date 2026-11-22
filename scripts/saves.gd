@@ -7,7 +7,7 @@ extends Node
 @export var points_IIIb : Array[int]
 @export var seeds : Array[int]
 @export var timed_moves : bool
-const SAVE_FOLDER : String = "user://saved_settings/"
+const SAVE_FOLDER : String = "user://"
 
 func _ready() -> void:
 	DirAccess.make_dir_absolute(SAVE_FOLDER)
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 ##SAVING FUNCTIONS
 func get_save_file_path() -> String:
-	return SAVE_FOLDER + str("settings.tres")
+	return SAVE_FOLDER + str("settings.res")
 
 func save_data() -> void:
 	var new_save = SaveData.new()

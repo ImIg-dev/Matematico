@@ -40,9 +40,9 @@ func _ready() -> void:
 	previous_runs.visible = 0
 
 func _process(_delta: float) -> void:
-	$SeedSelection/MarginContainer/VBoxContainer/Parallax2D.screen_offset.y = get_viewport_rect().size.y-34.5
-	$SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/Parallax2D.screen_offset.y = get_viewport_rect().size.y-34.5
-	$FinalScore/CenterContainer/Parallax2D2.screen_offset.y = get_viewport_rect().size.y-34.5
+	$SeedSelection/MarginContainer/VBoxContainer/Parallax2D/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
+	$SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/Parallax2D/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
+	$FinalScore/CenterContainer/Parallax2D2/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
 	if not Saves.timed_moves:
 		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel.visible = 1
 		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel2.visible = 0

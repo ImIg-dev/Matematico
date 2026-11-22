@@ -746,18 +746,18 @@ label_settings = SubResource("LabelSettings_1pjqo")
 horizontal_alignment = 1
 
 [node name="Parallax2D" type="Parallax2D" parent="SeedSelection/MarginContainer/VBoxContainer" unique_id=1440805413]
-scroll_offset = Vector2(83, 822)
 repeat_size = Vector2(69, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 28
 
 [node name="Sprite2D" type="Sprite2D" parent="SeedSelection/MarginContainer/VBoxContainer/Parallax2D" unique_id=2084805456]
 modulate = Color(0, 1.1560134, 1.4018731, 1)
-position = Vector2(931.99994, 27.999998)
+position = Vector2(932, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_iywne")
 
 [node name="PreviousRuns" type="ColorRect" parent="SeedSelection" unique_id=542749466]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -914,7 +914,6 @@ label_settings = SubResource("LabelSettings_0tnpc")
 horizontal_alignment = 1
 
 [node name="Parallax2D" type="Parallax2D" parent="SeedSelection/PreviousRuns/MarginContainer/VBoxContainer" unique_id=5512542]
-scroll_offset = Vector2(-13, 824)
 repeat_size = Vector2(69, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 28
@@ -1052,7 +1051,6 @@ label_settings = SubResource("LabelSettings_1pjqo")
 horizontal_alignment = 1
 
 [node name="Parallax2D2" type="Parallax2D" parent="FinalScore/CenterContainer" unique_id=622613920]
-scroll_offset = Vector2(-13, 824)
 repeat_size = Vector2(69, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 28
