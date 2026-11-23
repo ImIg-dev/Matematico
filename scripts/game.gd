@@ -1,6 +1,6 @@
 extends Control
-var board : Array[int] = []
-var second_board : Array[int] = []
+var board : Array = []
+var second_board : Array = []
 @onready var board_grid: GridContainer = $MarginContainer/VBoxContainer/Board/GridContainer
 @onready var second_board_grid: GridContainer = $MarginContainer/VBoxContainer/Board2/GridContainer
 @onready var tween_rect: ColorRect = $TweenRect
@@ -15,8 +15,10 @@ var no_of_number_sets := 4 #THIS SHOULD BE 4!
 @onready var final_score: ColorRect = $FinalScore
 @onready var personal_best: Label = $FinalScore/CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/Label2
 @onready var previous_runs: ColorRect = $SeedSelection/PreviousRuns
-@onready var run_list: RichTextLabel = $SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/RichTextLabel
-@onready var search_by_seed: LineEdit = $SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBySeed
+@onready var global_run_list: RichTextLabel = $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/RichTextLabel2
+@onready var personal_run_list: RichTextLabel = $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/RichTextLabel
+@onready var search_by_seed: LineEdit = $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBySeed
+@onready var ongoing_runs: MarginContainer = $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns
 var round_no : int = 0
 var turn : int = 0
 var round_greek : String = "I"
@@ -33,6 +35,10 @@ var pointsII : int = 0
 var pointsIIIa : int = 0
 var pointsIIIb : int = 0
 var old_second_board : bool = 0
+var current_save : int = 1
+var tried_custom : bool = 0
+var tried_random : bool = 0
+var leaderboard
 
 func _ready() -> void:
 	Saves.load_data()
@@ -40,17 +46,44 @@ func _ready() -> void:
 	final_score.visible = 0
 	timer.stop()
 	previous_runs.visible = 0
+	ongoing_runs.visible = 0
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run1.visible = 0; $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run2.visible = 0; $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run3.visible = 0
+	if Saves.ongoing_runs == []: ongoing_runs.visible = 0
+	if Saves.ongoing_runs.size() >= 1: $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run1.visible = 1
+	if Saves.ongoing_runs.size() >= 2: $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run2.visible = 1
+	if Saves.ongoing_runs.size() >= 3: $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run3.visible = 1
 
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random/warning.visible = 0
+	leaderboard = await SilentWolf.Scores.get_scores().sw_get_scores_complete
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/Username/VBoxContainer/UsernameInputField.text = Saves.username
+	
 func _process(_delta: float) -> void:
-	$SeedSelection/MarginContainer/VBoxContainer/Parallax2D/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
-	$SeedSelection/PreviousRuns/MarginContainer/VBoxContainer/Parallax2D/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
+	if Saves.ongoing_runs.size() > 3:
+		Saves.ongoing_runs[0] = Saves.ongoing_runs[1]
+		Saves.ongoing_runs[1] = Saves.ongoing_runs[2]
+		Saves.ongoing_runs[2] = Saves.ongoing_runs[3]
+		Saves.ongoing_runs.remove_at(3)
+	if Saves.ongoing_runs.size() >= 1: $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run1/HBoxContainer/seed.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-1][0])
+	if Saves.ongoing_runs.size() >= 1:$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run1/HBoxContainer/score.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-1][7])
+	if Saves.ongoing_runs.size() >= 2:$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run2/HBoxContainer/seed.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-2][0])
+	if Saves.ongoing_runs.size() >= 2:$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run2/HBoxContainer/score.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-2][7])
+	if Saves.ongoing_runs.size() >= 3:$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run3/HBoxContainer/seed.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-3][0])
+	if Saves.ongoing_runs.size() >= 3:$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/VBoxContainer/VBoxContainer/Run3/HBoxContainer/score.text = str(Saves.ongoing_runs[Saves.ongoing_runs.size()-3][7])
+	$SeedSelection/Parallax2D/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
+	$SeedSelection/PreviousRuns/Parallax2D2/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
 	$FinalScore/CenterContainer/Parallax2D2/Sprite2D.global_position.y = get_viewport_rect().size.y-34.5
+	$SeedSelection/Sprite2D2.global_position.y = get_viewport_rect().size.y-69-26
+	$SeedSelection/PreviousRuns/Sprite2D3.global_position.y = get_viewport_rect().size.y-69-26
+	if tried_custom:
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = "THIS WILL REWRITE THE THIRD SAVE"
+	if tried_random:
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random/warning.visible = 1
 	if not Saves.timed_moves:
-		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel.visible = 1
-		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel2.visible = 0
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel.visible = 1
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel2.visible = 0
 	else:
-		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel.visible = 0
-		$SeedSelection/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel2.visible = 1
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel.visible = 0
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves/HBoxContainer/Panel2.visible = 1
 	seed_display.text = "seed: %s" % custom_seed
 	if round_no == 1:
 		mode.text = "I: MAXIMUM"
@@ -90,14 +123,24 @@ func _process(_delta: float) -> void:
 		await tween_2.finished
 		tween_rect.visible = 0
 	if previous_runs.visible:
-		run_list.text = ""
+		personal_run_list.text = ""
+		global_run_list.text = ""
 		if search_by_seed.text != "":
+			global_run_list.visible = 1; $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Label2.visible = 1
+			for i in leaderboard.scores:
+				if i.metadata.seed == int(search_by_seed.text):
+					global_run_list.text += "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s | %s | %s[/font]\n" % [i.player_name, int(i.metadata.seed), int(i.score)]
 			for i in Saves.seeds.size():
 				if Saves.seeds[i] == int(search_by_seed.text):
-					run_list.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]|%s|%s|%s|%s|[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]\n" % [Saves.seeds[i], Saves.points_I[i], -2*Saves.points_II[i], Saves.points_IIIa[i], -2*Saves.points_IIIb[i], Saves.points[i]] + run_list.text
+					personal_run_list.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]|%s|%s|%s|%s|[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]\n" % [Saves.seeds[i], Saves.points_I[i], -2*Saves.points_II[i], Saves.points_IIIa[i], -2*Saves.points_IIIb[i], Saves.points[i]] + personal_run_list.text
+			if global_run_list.text == "": global_run_list.visible = 0; $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Label2.visible = 0
+			if personal_run_list.text == "": personal_run_list.text = "[font_size=25]No records of you playing with this seed.[/font_size]"
 		else:
+			global_run_list.visible = 0; $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Label2.visible = 0
 			for i in Saves.seeds.size():
-				run_list.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]|%s|%s|%s|%s|[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]\n" % [Saves.seeds[i], Saves.points_I[i], -2*Saves.points_II[i], Saves.points_IIIa[i], -2*Saves.points_IIIb[i], Saves.points[i]] + run_list.text
+				personal_run_list.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]|%s|%s|%s|%s|[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s[/font]\n" % [Saves.seeds[i], Saves.points_I[i], Saves.points_II[i], Saves.points_IIIa[i], -2*Saves.points_IIIb[i], Saves.points[i]] + personal_run_list.text
+		if personal_run_list.text == "":
+			personal_run_list.text = "[font_size=20]Personal scores are saved locally and are unstable. I sincerely apologize.[/font_size]"
 	if not old_second_board and second_board_opened:
 		$MarginContainer/VBoxContainer/Board.visible = 0
 		$MarginContainer/VBoxContainer/Board2.visible = 1
@@ -157,11 +200,13 @@ func start_round() -> void:
 		board_grid.add_child(new_cell)
 		new_cell.name = "Cell " + str(i+1)
 		new_cell.board_position = i
+		new_cell.save_no = Saves.ongoing_runs.size()
 	for i in board_size*board_size:
 		var new_cell = board_cell.instantiate()
 		second_board_grid.add_child(new_cell)
 		new_cell.name = "Cell" + str(i+1)
 		new_cell.board_position = i
+		new_cell.save_no = Saves.ongoing_runs.size()
 		
 func count_points() -> void:
 	board_points = 0
@@ -321,6 +366,12 @@ func round_over() -> void:
 		Saves.points_IIIa.append(pointsIIIa)
 		Saves.points_IIIb.append(pointsIIIb)
 		Saves.save_data()
+		var run_metadata : Dictionary = {
+			"seed" : custom_seed,
+		}
+		var run_username : String = Saves.username
+		if Saves.username == "": run_username = "Unknown"
+		SilentWolf.Scores.save_score(run_username, points, "main", run_metadata)
 	$MarginContainer/VBoxContainer/HUD/HBoxContainer/CurrentNumber.text = str(points)
 	if round_no == 2:
 		$MarginContainer/VBoxContainer/HUD/HBoxContainer/Points.text = str(-2*board_points)
@@ -330,7 +381,14 @@ func round_over() -> void:
 	waiting = 1
 
 func _on_submit_pressed() -> void:
-	custom_seed = int($SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField.text)
+	#if not tried_custom and Saves.ongoing_runs.size() >= 3:
+		#tried_custom = true
+		#return
+	tried_custom = false
+	tried_random = false
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = ""
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random/warning.visible = 0
+	custom_seed = int($SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField.text)
 	tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
 	tween.tween_property(tween_rect, "color:a", 1, 1)
@@ -346,13 +404,20 @@ func _on_submit_pressed() -> void:
 
 func _on_seed_input_field_text_changed(new_text: String) -> void:
 	if not new_text.is_valid_int() and not new_text == "":
-		$SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField.text = old_text
-		$SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = "SEEDS CONSIST OF NUMBERS ONLY!"
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField.text = old_text
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = "SEEDS CONSIST OF NUMBERS ONLY!"
 	else:
 		old_text = new_text
-		$SeedSelection/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = ""
+		$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = ""
 
 func _on_random_pressed() -> void:
+	#if not tried_random and Saves.ongoing_runs.size() >= 3:
+		#tried_random = true
+		#return
+	tried_random = false
+	tried_custom = false
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = ""
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random/warning.visible = 0
 	custom_seed = randi_range(0, 99999)
 	tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
@@ -387,6 +452,47 @@ func _on_button_2_button_up() -> void:
 
 func _on_button_button_up() -> void:
 	previous_runs.visible = 1
+	leaderboard = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 
 func _on_back_to_menu_button_up() -> void:
 	previous_runs.visible = 0
+
+func _on_username_input_field_text_changed(new_text: String) -> void:
+	Saves.username = new_text
+	Saves.save_data()
+
+func _on_run_1_button_up() -> void:
+	custom_seed = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][0]
+	board = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][1]
+	second_board = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][2]
+	pointsI = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][3]
+	pointsII = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][4]
+	pointsIIIa = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][5]
+	pointsIIIb = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][6]
+	points = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][7]
+	board_points = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][8]
+	second_board_points = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][9]
+	turn = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][10]
+	round_no = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][11]
+	second_board_opened = Saves.ongoing_runs[Saves.ongoing_runs.size()-1][12]
+	tried_custom = false
+	tried_random = false
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField/Label.text = ""
+	$SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random/warning.visible = 0
+	tween_rect.color.a = 0; tween_rect.visible = 1; tween_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+	tween.tween_property(tween_rect, "color:a", 1, 1)
+	await tween.finished
+	seed_selection.visible = 0
+	generate_numbers()
+	tween_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tween_rect.color.a = 1
+	var tween_2 = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween_2.tween_property(tween_rect, "color:a", 0, 1)
+	await tween_2.finished
+	tween_rect.visible = 0
+func _on_run_2_button_up() -> void:
+	pass # Replace with function body.
+
+func _on_run_3_button_up() -> void:
+	pass # Replace with function body.

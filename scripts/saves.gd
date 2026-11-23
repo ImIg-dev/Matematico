@@ -7,9 +7,16 @@ extends Node
 @export var points_IIIb : Array[int]
 @export var seeds : Array[int]
 @export var timed_moves : bool
+@export var ongoing_runs : Array
+@export var username : String
 const SAVE_FOLDER : String = "user://"
 
 func _ready() -> void:
+	SilentWolf.configure({
+		"api_key": "pQ84s8hslQ86RYBtRm0I67fvEdfBpRZ44aAeDIV8",
+		"game_id": "Matematico",
+		"log_level": 0
+	})
 	DirAccess.make_dir_absolute(SAVE_FOLDER)
 	var node = Node.new()
 	add_child(node)
@@ -45,7 +52,9 @@ func load_data() -> void:
 		points_IIIa = []
 		points_IIIb = []
 		timed_moves = 0
+		ongoing_runs = []
 		seeds = []
+		username = ""
 		save_data()
 		return
 	var loaded_save = ResourceLoader.load(get_save_file_path()) as SaveData
