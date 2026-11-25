@@ -115,7 +115,7 @@ func _on_SaveScore_request_completed(result, response_code, headers, body) -> vo
 		sw_save_score_complete.emit(sw_result)
 
 
-func get_scores(maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
+func get_scores(maximum: int=500, ldboard_name: String="main", period_offset: int=0) -> Node:
 	var prepared_http_req = SilentWolf.prepare_http_request()
 	GetScores = prepared_http_req.request
 	wrGetScores = prepared_http_req.weakref
@@ -154,7 +154,7 @@ func _on_GetScores_request_completed(result, response_code, headers, body) -> vo
 		sw_get_scores_complete.emit(sw_result)
 
 
-func get_scores_by_player(player_name: String, maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
+func get_scores_by_player(player_name: String, maximum: int=500, ldboard_name: String="main", period_offset: int=0) -> Node:
 	if player_name == null:
 		SWLogger.error("Error in SilentWolf.Scores.get_scores_by_player: provided player_name is null")
 	else:
@@ -190,7 +190,7 @@ func _on_GetScoresByPlayer_request_completed(result, response_code, headers, bod
 		sw_get_player_scores_complete.emit(sw_result)	
 
 
-func get_top_score_by_player(player_name: String, maximum: int=10, ldboard_name: String="main", period_offset: int=0) -> Node:
+func get_top_score_by_player(player_name: String, maximum: int=500, ldboard_name: String="main", period_offset: int=0) -> Node:
 	if player_name == null:
 		SWLogger.error("Error in SilentWolf.Scores.get_top_score_by_player: provided player_name is null")
 	else:
