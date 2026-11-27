@@ -13,9 +13,11 @@ const SAVE_FOLDER : String = "user://"
 
 func _ready() -> void:
 	SilentWolf.configure({
+		#I KNOW IT'S DUMB TO EXPOSE THIS, BUT I DON'T HOW TO DO IT DIFFERENTLY
+		#SO PLEASE, MISCHIEVIOUS VISITORS, DON'T ABUSE THIS
 		"api_key": "pQ84s8hslQ86RYBtRm0I67fvEdfBpRZ44aAeDIV8",
 		"game_id": "Matematico",
-		"log_level": 0
+		"log_level": 1
 	})
 	DirAccess.make_dir_absolute(SAVE_FOLDER)
 	var node = Node.new()

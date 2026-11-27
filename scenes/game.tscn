@@ -118,7 +118,7 @@ font_size = 30
 font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvuet"]
-bg_color = Color(0.06552558, 0.18891558, 0.22710772, 1)
+bg_color = Color(0.06666667, 0.1882353, 0.22745098, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -159,6 +159,13 @@ outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 font = ExtResource("2_lbhrr")
 font_size = 25
 font_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sww3w"]
+bg_color = Color(0.1173, 0.20182501, 0.23, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntcvr"]
 font = ExtResource("4_p57ef")
@@ -217,7 +224,7 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_vtaks"]
 font = ExtResource("3_iywne")
-font_size = 40
+font_size = 36
 font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 outline_size = 4
 outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
@@ -421,6 +428,35 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnb83"]
+bg_color = Color(0.029503005, 0.11232388, 0.14093566, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_ff6u5"]
+font = ExtResource("2_lbhrr")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_sww3w"]
+font = ExtResource("4_p57ef")
+font_size = 167
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suyxu"]
+bg_color = Color(0.11764706, 0.2, 0.23137255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_suyxu"]
+font = ExtResource("3_iywne")
+font_size = 29
+font_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+outline_size = 4
+outline_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 
 [node name="Game" type="Control" unique_id=173701679]
 layout_mode = 3
@@ -654,7 +690,6 @@ grow_vertical = 2
 theme_override_colors/scroll_hint_vertical_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
 theme_override_colors/scroll_hint_horizontal_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
 follow_focus = true
-vertical_scroll_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="SeedSelection/ScrollContainer" unique_id=890955408]
 layout_mode = 2
@@ -769,6 +804,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sww3w")
 
 [node name="PreviousRuns" type="Label" parent="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/Button" unique_id=155484412]
 layout_mode = 1
@@ -890,7 +926,6 @@ theme_override_constants/separation = 7
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
 
 [node name="Button2" type="Button" parent="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer" unique_id=482136997]
-visible = false
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
@@ -910,7 +945,7 @@ offset_right = 237.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "COMPETITION MODE"
+text = "COMPETITION MODE (WIP)"
 label_settings = SubResource("LabelSettings_vtaks")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -973,6 +1008,7 @@ layout_mode = 2
 text = "MATEMATICO"
 label_settings = SubResource("LabelSettings_u5sy4")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1088800200]
 layout_mode = 2
@@ -1177,7 +1213,6 @@ grow_vertical = 2
 theme_override_colors/scroll_hint_vertical_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
 theme_override_colors/scroll_hint_horizontal_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
 follow_focus = true
-vertical_scroll_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="SeedSelection/NewRunSeed/ScrollContainer" unique_id=289569578]
 layout_mode = 2
@@ -1396,7 +1431,7 @@ position = Vector2(932, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_iywne")
 
-[node name="PreviousRuns" type="ColorRect" parent="SeedSelection/NewRunSeed" unique_id=1310554572]
+[node name="Competition" type="ColorRect" parent="SeedSelection" unique_id=766441692]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -1407,15 +1442,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.029503005, 0.11232388, 0.14093566, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SeedSelection/NewRunSeed/PreviousRuns" unique_id=845133496]
+[node name="ScrollContainer" type="ScrollContainer" parent="SeedSelection/Competition" unique_id=162890119]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/scroll_hint_vertical_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+theme_override_colors/scroll_hint_horizontal_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+follow_focus = true
 
-[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer" unique_id=1299685689]
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/Competition/ScrollContainer" unique_id=270541901]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1424,76 +1462,65 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer" unique_id=1288391121]
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/Competition/ScrollContainer/MarginContainer" unique_id=58854633]
 layout_mode = 2
 
-[node name="title" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1210446375]
+[node name="title" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1445483027]
 layout_mode = 2
 text = "MATEMATICO"
 label_settings = SubResource("LabelSettings_u5sy4")
 horizontal_alignment = 1
 
-[node name="HSeparator3" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1099280817]
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1445026899]
 layout_mode = 2
 theme_override_constants/separation = 14
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
 
-[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1614462015]
+[node name="MarginContainer" type="MarginContainer" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=247613350]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Panel" type="Panel" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=2126088400]
+[node name="Panel" type="Panel" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=380561409]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=182383041]
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=381536311]
 layout_mode = 2
 
-[node name="NewGame" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=470145829]
-custom_minimum_size = Vector2(0, 60)
+[node name="Join" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=72482174]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "PREVIOUS RUNS"
+text = "JOIN"
 label_settings = SubResource("LabelSettings_1pjqo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1159560936]
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1466954212]
 layout_mode = 2
-theme_override_constants/separation = 7
-theme_override_styles/separator = SubResource("StyleBoxEmpty_uwrxv")
-
-[node name="custom" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2059629701]
-layout_mode = 2
-text = "search by seed:"
-label_settings = SubResource("LabelSettings_lnu2h")
-horizontal_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=893211926]
-layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
 
-[node name="SearchBySeed" type="LineEdit" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2007156543]
-custom_minimum_size = Vector2(0, 100)
+[node name="CompInputField" type="LineEdit" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=877389571]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
 theme_override_colors/font_placeholder_color = Color(0.54509807, 0.627451, 0.6431373, 1)
 theme_override_fonts/font = ExtResource("2_lbhrr")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_gee14")
-theme_override_styles/focus = SubResource("StyleBoxFlat_5newe")
-placeholder_text = "00000"
+theme_override_styles/normal = SubResource("StyleBoxFlat_1kice")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vtaks")
+placeholder_text = "00000000"
 alignment = 1
-max_length = 5
+max_length = 8
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
 virtual_keyboard_type = 2
 caret_blink = true
 
-[node name="Label" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBySeed" unique_id=366428983]
+[node name="Label" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CompInputField" unique_id=1482697035]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1504,79 +1531,132 @@ grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_lbhrr")
 horizontal_alignment = 1
-vertical_alignment = 2
 
-[node name="HSeparator2" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1753438129]
+[node name="join" type="Button" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1092223337]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvpfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dinhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
+text = "join the competition"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=372225489]
+[node name="HSeparator4" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=415760889]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
 
-[node name="Label" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=33460843]
+[node name="Results" type="MarginContainer" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=278394609]
 layout_mode = 2
-text = "personal"
-label_settings = SubResource("LabelSettings_e0em5")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results" unique_id=1066463957]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results" unique_id=241673777]
+layout_mode = 2
+
+[node name="Results" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer" unique_id=1507822266]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "RESULTS"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer" unique_id=698148853]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="ResultsInputField" type="LineEdit" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer" unique_id=342284668]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_colors/font_placeholder_color = Color(0.54509807, 0.627451, 0.6431373, 1)
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1kice")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vtaks")
+placeholder_text = "00000000"
+alignment = 1
+max_length = 8
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="Label" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/ResultsInputField" unique_id=1430736894]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_lbhrr")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1567919788]
-custom_maximum_size = Vector2(-1, 100)
+[node name="results" type="Button" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer" unique_id=1843651567]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-theme_override_colors/default_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
-theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("2_u5sy4")
-theme_override_font_sizes/normal_font_size = 34
-bbcode_enabled = true
-text = "g
-g
-g"
-fit_content = true
-selection_enabled = true
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvpfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dinhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
+text = "see the leaderboard"
 
-[node name="Label2" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1114551851]
+[node name="HSeparator6" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=287801864]
 layout_mode = 2
-text = "global"
-label_settings = SubResource("LabelSettings_e0em5")
-horizontal_alignment = 1
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1427962051]
-custom_maximum_size = Vector2(-1, 100)
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-theme_override_colors/default_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
-theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("2_u5sy4")
-theme_override_font_sizes/normal_font_size = 34
-bbcode_enabled = true
-text = "g
-g
-g"
-fit_content = true
-selection_enabled = true
-
-[node name="HSeparator2" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=61411941]
-layout_mode = 2
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
 
-[node name="HSeparator4" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=128242815]
-layout_mode = 2
-theme_override_constants/separation = 7
-theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
-
-[node name="BackToMenu" type="Button" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1334624087]
-custom_minimum_size = Vector2(0, 120)
+[node name="Host" type="Button" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=364815049]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
 
-[node name="PreviousRuns" type="Label" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" unique_id=861815907]
+[node name="host" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Host" unique_id=757372027]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -24.0
+offset_right = 237.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HOST"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1674700117]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="BackToMenu" type="Button" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1902268602]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="PreviousRuns" type="Label" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" unique_id=1807798702]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1593,23 +1673,23 @@ text = "BACK TO MENU"
 label_settings = SubResource("LabelSettings_0tnpc")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1448219626]
+[node name="HSeparator" type="HSeparator" parent="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer" unique_id=797362956]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 70
 theme_override_styles/separator = SubResource("StyleBoxEmpty_puekp")
 
-[node name="Sprite2D3" type="Sprite2D" parent="SeedSelection/NewRunSeed/PreviousRuns" unique_id=619721722]
-position = Vector2(943, 0)
+[node name="Sprite2D2" type="Sprite2D" parent="SeedSelection/Competition" unique_id=711221859]
+position = Vector2(944.0001, 3.3537617e-12)
 rotation = 1.5707964
 scale = Vector2(0.22266196, 2136.938)
 texture = SubResource("GradientTexture1D_iblnq")
 
-[node name="Parallax2D2" type="Parallax2D" parent="SeedSelection/NewRunSeed/PreviousRuns" unique_id=884746447]
+[node name="Parallax2D" type="Parallax2D" parent="SeedSelection/Competition" unique_id=852526307]
 repeat_size = Vector2(69, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 28
 
-[node name="Sprite2D" type="Sprite2D" parent="SeedSelection/NewRunSeed/PreviousRuns/Parallax2D2" unique_id=1559144441]
+[node name="Sprite2D" type="Sprite2D" parent="SeedSelection/Competition/Parallax2D" unique_id=208521281]
 modulate = Color(0, 1.1560134, 1.4018731, 1)
 position = Vector2(932, 0)
 scale = Vector2(0.1, 0.1)
@@ -1769,17 +1849,224 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.03137255, 0.11372549, 0.14117648, 1)
 
+[node name="Host" type="ColorRect" parent="." unique_id=2135445023]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.029503005, 0.11232388, 0.14093566, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Host" unique_id=1614800263]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/scroll_hint_vertical_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+theme_override_colors/scroll_hint_horizontal_color = Color(0.84313726, 0.2901961, 0.28627452, 1)
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Host/ScrollContainer" unique_id=1248895851]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host/ScrollContainer/MarginContainer" unique_id=443053886]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2076556945]
+layout_mode = 2
+text = "MATEMATICO"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2008989881]
+layout_mode = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1292636820]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=351753433]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1549626964]
+layout_mode = 2
+
+[node name="code" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=487344004]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "CODE: 00199999"
+label_settings = SubResource("LabelSettings_1pjqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=978802218]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="Panel" type="Panel" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=364454072]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnb83")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel" unique_id=569814455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="round" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/HBoxContainer" unique_id=1165554804]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "I"
+label_settings = SubResource("LabelSettings_ff6u5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="number" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/HBoxContainer" unique_id=1931960686]
+layout_mode = 2
+text = "13"
+label_settings = SubResource("LabelSettings_sww3w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="turn" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/HBoxContainer" unique_id=202872926]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "15"
+label_settings = SubResource("LabelSettings_ff6u5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1563807475]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="next" type="Button" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1940095793]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lbhrr")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tnpc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kvpfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dinhu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_suyxu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
+text = "next number"
+
+[node name="HSeparator4" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=598049806]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yqjtg")
+
+[node name="Results" type="MarginContainer" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=851973949]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/Results" unique_id=2007837301]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/Results" unique_id=1650628647]
+custom_minimum_size = Vector2(0, 261)
+layout_mode = 2
+
+[node name="HSeparator6" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2016769085]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kvpfn")
+
+[node name="BackToMenuHost" type="Button" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1779929554]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvuet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trtic")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ir15t")
+
+[node name="PreviousRuns" type="Label" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/BackToMenuHost" unique_id=480550846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -24.0
+offset_right = 237.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "END COMPETITION"
+label_settings = SubResource("LabelSettings_suyxu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1928139905]
+layout_mode = 2
+theme_override_constants/separation = 70
+theme_override_styles/separator = SubResource("StyleBoxEmpty_puekp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Host" unique_id=1136326408]
+position = Vector2(944.0001, 3.3537617e-12)
+rotation = 1.5707964
+scale = Vector2(0.22266196, 2136.938)
+texture = SubResource("GradientTexture1D_iblnq")
+
+[node name="Parallax2D" type="Parallax2D" parent="Host" unique_id=703574381]
+repeat_size = Vector2(69, 0)
+autoscroll = Vector2(15, 0)
+repeat_times = 28
+
+[node name="Sprite2D" type="Sprite2D" parent="Host/Parallax2D" unique_id=1748894594]
+modulate = Color(0, 1.1560134, 1.4018731, 1)
+position = Vector2(932, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_iywne")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/Run1" to="." method="_on_run_1_button_up"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/NewRun" to="." method="_on_new_run_button_up"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves" to="." method="_on_timed_moves_button_up"]
 [connection signal="text_changed" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/Username/VBoxContainer/UsernameInputField" to="." method="_on_username_input_field_text_changed"]
+[connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_competition_button_up"]
 [connection signal="button_up" from="SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
 [connection signal="pressed" from="SeedSelection/NewRunSeed/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/random" to="." method="_on_random_pressed"]
 [connection signal="text_changed" from="SeedSelection/NewRunSeed/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SeedInputField" to="." method="_on_seed_input_field_text_changed"]
 [connection signal="pressed" from="SeedSelection/NewRunSeed/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/submit" to="." method="_on_submit_pressed"]
 [connection signal="button_up" from="SeedSelection/NewRunSeed/ScrollContainer/MarginContainer/VBoxContainer/TimedMoves" to="." method="_on_timed_moves_button_up"]
 [connection signal="button_up" from="SeedSelection/NewRunSeed/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
-[connection signal="button_up" from="SeedSelection/NewRunSeed/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
+[connection signal="text_changed" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CompInputField" to="." method="_on_comp_input_field_text_changed"]
+[connection signal="button_up" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/join" to="." method="_on_join_button_up"]
+[connection signal="text_changed" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/ResultsInputField" to="." method="_on_comp_input_field_text_changed"]
+[connection signal="button_up" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results" to="." method="_on_join_button_up"]
+[connection signal="button_up" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/Host" to="." method="_on_host_button_up"]
+[connection signal="button_up" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
 [connection signal="button_up" from="FinalScore/CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_button_up"]
+[connection signal="button_up" from="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/next" to="." method="_on_next_button_up"]
+[connection signal="button_up" from="Host/ScrollContainer/MarginContainer/VBoxContainer/BackToMenuHost" to="." method="_on_back_to_menu_host_button_up"]
