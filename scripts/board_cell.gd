@@ -14,7 +14,6 @@ func _on_self_button_up() -> void:
 		return
 	disabled = 1
 	get_parent().get_parent().get_parent().get_parent().get_parent().cell_pressed(board_position)
-	#label.text = str(get_parent().get_parent().get_parent().get_parent().get_parent().number_sequence[get_parent().get_parent().get_parent().get_parent().get_parent().turn-3])
 func write_number(second : bool) -> void:
 	if not second:
 		if get_parent().get_parent().get_parent().get_parent().get_parent().board[board_position] == 0:

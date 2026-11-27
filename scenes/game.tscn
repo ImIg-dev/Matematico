@@ -1995,6 +1995,24 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iblnq")
 custom_minimum_size = Vector2(0, 261)
 layout_mode = 2
 
+[node name="results" type="RichTextLabel" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer" unique_id=1999727567]
+custom_maximum_size = Vector2(-1, 300)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_colors/default_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_constants/line_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_u5sy4")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+selection_enabled = true
+
+[node name="refresh" type="Button" parent="Host/ScrollContainer/MarginContainer/VBoxContainer/Results" unique_id=944411080]
+layout_mode = 2
+flat = true
+
 [node name="HSeparator6" type="HSeparator" parent="Host/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2016769085]
 layout_mode = 2
 theme_override_constants/separation = 3
@@ -2048,6 +2066,8 @@ position = Vector2(932, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_iywne")
 
+[node name="Timer2" type="Timer" parent="." unique_id=1569218212]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns/Run1" to="." method="_on_run_1_button_up"]
 [connection signal="button_up" from="SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/NewRun" to="." method="_on_new_run_button_up"]
@@ -2069,4 +2089,6 @@ texture = ExtResource("5_iywne")
 [connection signal="button_up" from="SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_button_up"]
 [connection signal="button_up" from="FinalScore/CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_button_up"]
 [connection signal="button_up" from="Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/next" to="." method="_on_next_button_up"]
+[connection signal="button_up" from="Host/ScrollContainer/MarginContainer/VBoxContainer/Results/refresh" to="." method="_on_refresh_button_up"]
 [connection signal="button_up" from="Host/ScrollContainer/MarginContainer/VBoxContainer/BackToMenuHost" to="." method="_on_back_to_menu_host_button_up"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

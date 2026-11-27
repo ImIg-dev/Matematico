@@ -19,6 +19,7 @@ var no_of_number_sets := 4 #THIS SHOULD BE 4!
 @onready var personal_run_list: RichTextLabel = $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/RichTextLabel
 @onready var search_by_seed: LineEdit = $SeedSelection/PreviousRuns/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SearchBySeed
 @onready var ongoing_runs: MarginContainer = $SeedSelection/ScrollContainer/MarginContainer/VBoxContainer/OngoingRuns
+@onready var receiver_timer: Timer = $Timer2
 var round_no : int = 0
 var turn : int = 0
 var round_greek : String = "I"
@@ -39,14 +40,16 @@ var pointsIIIb : int = 0
 var old_second_board : bool = 0
 var tried : bool = 0
 var leaderboard
+var input
 var competition : bool = 0
-var comp_code : int = 0
+var comp_code : String = "0"
 var hosting : bool = 0
 var host_code : String = "0"
 var timer_del : Timer = Timer.new()
 var timer_del_iter : int = 0
 var no_of_deleted : int = 0
 var to_be_deleted
+var ami_joinable : bool = 0
 
 func _ready() -> void:
 	Saves.load_data()
@@ -172,7 +175,7 @@ func _process(_delta: float) -> void:
 				for i in leaderboard.scores:
 					if j > leaderboard.scores.size():
 						break
-					if i.player_name.contains("hosttool"):
+					if i.player_name.contains("hosttool") or i.metadata.keys().has("technical"):
 						continue
 					global_run_list.text += "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s | %s | %s[/font]\n" % [i.player_name, int(i.metadata.seed), int(i.score)]
 					j += 1
@@ -223,7 +226,8 @@ func start_round() -> void:
 	if Saves.timed_moves:
 		timer.start(15)
 	board_points = 0
-	turn = 1
+	if not competition:
+		turn = 1
 	round_no += 1
 	if round_no <= 1:
 		round_greek = "I"
@@ -415,7 +419,7 @@ func round_over() -> void:
 		Saves.save_data()
 		var run_metadata : Dictionary = {
 			"seed" : custom_seed,
-			"competition" : comp_code
+			"competition" : str(comp_code)
 		}
 		var run_username : String = Saves.username
 		if Saves.username == "": run_username = "Unknown"
@@ -545,11 +549,13 @@ func cell_pressed(board_position : int) -> void:
 		if round_no == 3:
 			second_board_opened = 1
 		else:
-			turn += 1
+			if not competition:
+				turn += 1
 	else:
 		second_board_grid.get_child(board_position).write_number_definite(number_sequence[turn-2])
 		second_board[board_position] = number_sequence[turn-2]
-		turn += 1
+		if not competition:
+			turn += 1
 		count_points_second()
 		second_board_opened = 0
 	if Saves.timed_moves:
@@ -578,14 +584,15 @@ func _on_comp_input_field_text_changed(new_text: String) -> void:
 func _on_join_button_up() -> void:
 	leaderboard = await SilentWolf.Scores.get_scores(0).sw_get_scores_complete
 	var exists : bool = false
-	var joinable : bool = false
+	var joinable : bool = true
 	for score in leaderboard.scores:
 		if score.player_name == "hosttool" + str($SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CompInputField.text):
 			exists = true
-			if score.score == -1:
-				joinable = true
+			if score.score != -1:
+				joinable = false
+			elif joinable:
 				custom_seed = score.metadata.seed
-				comp_code = score.metadata.competition
+				comp_code = str(score.metadata.competition)
 			break
 	if not exists:
 		$SeedSelection/Competition/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CompInputField/Label.text = "No competition uses this code"
@@ -605,6 +612,13 @@ func _on_join_button_up() -> void:
 	tween_2.tween_property(tween_rect, "color:a", 0, 1)
 	await tween_2.finished
 	tween_rect.visible = 0
+	$MarginContainer/VBoxContainer/HUD/HBoxContainer/CurrentNumber.text = "X"
+	$MarginContainer/VBoxContainer/HUD/HBoxContainer/RoundTurn.text = "0\n0"
+	$MarginContainer/VBoxContainer/HUD/HBoxContainer/Points.text = "0"
+	var run_username : String = Saves.username
+	if Saves.username == "": run_username = "Unknown"
+	await SilentWolf.Scores.save_score(run_username, 0, "main", {"competition":comp_code, "technical" : true}).sw_save_score_complete
+	receiver_timer.start(1)
 
 func _on_host_button_up() -> void:
 	host_code = "0"
@@ -622,7 +636,7 @@ func _on_host_button_up() -> void:
 	prints(indexed, host_code)
 	custom_seed = int(host_code)
 	host_code = indexed+host_code
-	await SilentWolf.Scores.save_score(("hosttool"+str(host_code)), -1, "main", {"seed":custom_seed, "competition":host_code}).sw_save_score_complete
+	await SilentWolf.Scores.save_score(("hosttool"+str(host_code)), -1, "main", {"seed":custom_seed, "competition":str(host_code)}).sw_save_score_complete
 	print("successful")
 	hosting = 1
 	round_no = 0
@@ -636,8 +650,11 @@ func _on_host_button_up() -> void:
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/code.text = "CODE: "+host_code
 	turn = 0
 	round_no += 1
+	ami_joinable = 1
+	refresh_leaderboard()
 
 func _on_next_button_up() -> void:
+	ami_joinable = 0
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSeparator3.visible = 0
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer.custom_minimum_size.y = 321.0
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/code.visible = 0
@@ -670,6 +687,7 @@ func _on_next_button_up() -> void:
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/HBoxContainer/round.text = round_greek
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/HBoxContainer/turn.text = str(turn)
 	$Host/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/next.disabled = 0
+	refresh_leaderboard()
 	
 func _on_timer_del_timeout() -> void:
 	timer_del.stop()
@@ -704,3 +722,39 @@ func _on_back_to_menu_host_button_up() -> void:
 	print(tried)
 	$Host.visible = 0
 	seed_selection.visible = 1
+
+func refresh_leaderboard() -> void:
+	var no_of_players : int = 0
+	if not ami_joinable:
+		$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text = ""
+		$Host/ScrollContainer/MarginContainer/VBoxContainer/Results.visible = 0
+		return
+		leaderboard = await SilentWolf.Scores.get_scores(0).sw_get_scores_complete
+		for score in leaderboard.scores:
+			if score.metadata.keys().has("competition"):
+				if score.metadata.competition == host_code and not score.player_name.contains("hosttool"):
+					$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text = "%s | %s\n" % [score.player_name, score.score] + $Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text
+	else:
+		$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text = ""
+		leaderboard = await SilentWolf.Scores.get_scores(0).sw_get_scores_complete
+		for score in leaderboard.scores:
+			if score.metadata.keys().has("competition"):
+				if score.metadata.competition == host_code and not score.player_name.contains("hosttool"):
+					$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text = "%s\n" % score.player_name + $Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text
+					no_of_players += 1
+		$Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text = "[font=res://assets/fonts/Anonymous_Pro_B.ttf]%s PLAYERS[/font]\n" % no_of_players + $Host/ScrollContainer/MarginContainer/VBoxContainer/Results/VBoxContainer/results.text
+
+func _on_refresh_button_up() -> void:
+	refresh_leaderboard()
+
+func _on_timer_2_timeout() -> void:
+	receiver_timer.stop()
+	input = await SilentWolf.Scores.get_scores_by_player("hosttool"+str(comp_code)).sw_get_player_scores_complete
+	print(comp_code)
+	if input.scores == []:
+		seed_selection.visible = 1
+		return
+	var latest = input.scores[input.scores.size()-1]
+	turn = int(latest.score)%25
+	round_no = floor(latest.score/25)
+	receiver_timer.start(1)
